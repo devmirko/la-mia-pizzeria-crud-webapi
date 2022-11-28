@@ -1,0 +1,54 @@
+﻿@{
+    Layout = "_Layout_Guest";
+}
+
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row js_no_post text-center d-none">
+            <div class="col-12">
+                <h3>Non hai inserito alcun post</h3>
+            </div>
+        </div>
+        <div class="row container d-flex justify-content-center js_post_table d-none">
+            <div class="col-sm-12">
+                <!-- Draggable default card start -->
+
+               
+                <!-- Draggable default card start -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+<script type="text/javascript">
+    axios.get('/api/pizza/get').then(res => {
+        if (res.data.length == 0) {
+            document.querySelector('.js_no_post').classList.remove('d-none');
+            document.querySelector('.js_post_table').classList.add('d-none');
+        } else {
+            document.querySelector('.js_post_table').classList.remove('d-none');
+            document.querySelector('.js_no_post').classList.add('d-none');
+            document.querySelector('.js_post_table').innerHTML = '';
+            res.data.forEach(pizza => {
+                console.log('pizza', pizza);
+                document.querySelector('.js_post_table').innerHTML +=
+                    `
+                                                                <div class="col-md-3" style="">
+                                    <div class="card-sub">
+                                            <img class="card-img-top img-fluid" src="${pizza.image}" alt="Card image cap">
+                                        <div class="card-block">
+                                                <h4 class="card-title">${pizza.name}</h4>
+                                                    <p class="card-text">${pizza.description}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                    `;
+            });
+        }
+    }).catch(error => {
+        debugger;
+        console.log(error);
+    })
+
+</script>

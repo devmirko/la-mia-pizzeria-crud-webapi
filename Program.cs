@@ -3,7 +3,7 @@ using la_mia_pizzeria_razor_layout.Models.Repositories;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddScoped<IDbPizzaRepository, InMemoryPizzaRepository>();
+builder.Services.AddScoped<IDbPizzaRepository, DbPizzeriaRepository>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -29,6 +29,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Pizza}/{action=Index}/{id?}");
+    pattern: "{controller=Guest}/{action=Index}/{id?}");
 
 app.Run();

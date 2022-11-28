@@ -15,6 +15,11 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
 
         public List<Pizza> All()
         {
+            return db.Pizza.ToList();
+        }
+
+        public List<Pizza> AllWithRelations()
+        {
             return db.Pizza.Include(pizza => pizza.Category).Include(pizza => pizza.Tags).ToList();
         }
 
