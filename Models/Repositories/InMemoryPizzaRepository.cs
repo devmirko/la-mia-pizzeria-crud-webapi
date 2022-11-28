@@ -1,5 +1,6 @@
 ﻿using la_mia_pizzeria_razor_layout.Models.Form;
 using Microsoft.Extensions.Hosting;
+using System.Diagnostics.Metrics;
 
 namespace la_mia_pizzeria_razor_layout.Models.Repositories
 {
@@ -10,7 +11,7 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
         public static List<Category> Categories = new List<Category>();
 
         public static List<Tag> Tags = new List<Tag>();
-
+        private static int counter = 1;
 
 
 
@@ -41,7 +42,9 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
         public void Create(Pizza pizza, List<int> selectedTags)
         {
             
-            pizza.Id = Pizzas.Count;
+            pizza.Id = counter;
+            counter++;
+
             pizza.Category = GetByIdCategory(pizza.CategoryId);
 
             
@@ -124,32 +127,11 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
 
         public void AddCategory(Category category)
         {
-            Random rnd = new Random();
-            category.Id = rnd.Next(1,5);
+            //Random rnd = new Random();
+            category.Id = counter;
+            counter++;
 
-
-            
-            Random rand = new Random();
-
-            
-            int stringlen = rand.Next(4, 10);
-            int randValue;
-            string str = "";
-            char letter;
-            for (int i = 0; i < stringlen; i++)
-            {
-
-                
-                randValue = rand.Next(0, 26);
-
-                
-                letter = Convert.ToChar(randValue + 65);
-
-                
-                str = str + letter;
-            }
-            
-            category.Title = str;
+            category.Pizza = new List<Pizza>();
 
             Categories.Add(category);
 
@@ -157,30 +139,10 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
 
         public void AddTag(Tag tag)
         {
-            Random rnd = new Random();
+            tag.Id = counter;
+            counter++;
 
-            tag.Id = rnd.Next(1, 5);
-
-            Random rand = new Random();
-
-
-            int stringlen = rand.Next(4, 10);
-            int randValue;
-            string str = "";
-            char letter;
-            for (int i = 0; i < stringlen; i++)
-            {
-
-
-                randValue = rand.Next(0, 26);
-
-
-                letter = Convert.ToChar(randValue + 65);
-
-
-                str = str + letter;
-            }
-            tag.Title = str;
+            tag.Pizzas = new List<Pizza>();
 
             Tags.Add(tag);
 

@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 var builder = WebApplication.CreateBuilder(args);
 
 
-builder.Services.AddScoped<IDbPizzaRepository, DbPizzeriaRepository>();
+builder.Services.AddScoped<IDbPizzaRepository, InMemoryPizzaRepository>();
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
