@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "_Layout_Guest";
+}
+
+<div class="page-content page-container" id="page-content">
+    <div class="padding">
+        <div class="row container d-flex justify-content-center js_post_table">
+            <div class="col-sm-12">
+                <!-- zona card -->
+                <!-- fine zona card -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
+<script type="text/javascript">
+    axios.get('/api/pizza/detail?id=' + window.location.search.split("=")[1])
+    .then(res => {
+                console.log(res.data);
+                document.querySelector('.js_post_table').innerHTML +=
+                    `
+                                     <div class="col-md-3 mb-5" style="">
+                                        <div class="card-sub">
+                                                     <img class="card-img-top img-fluid" src="${res.data.image}" alt="Card image cap">
+                                            <div class="card-block">
+                                                          <h4 class="card-title">${res.data.name}</h4>
+                                                           <p class="card-text">${res.data.description}</p>
+                                                           <p class="card-text">${res.data.category.title}</p>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                        `;
+            
+        
+    }).catch(error => {
+        debugger;
+        console.log(error);
+    })
+
+</script>

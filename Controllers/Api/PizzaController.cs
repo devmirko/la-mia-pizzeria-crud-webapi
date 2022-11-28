@@ -24,6 +24,21 @@ namespace la_mia_pizzeria_razor_layout.Controllers.Api
 
         }
 
+        [HttpGet]
+        public IActionResult Detail(int id)
+        {
+            Pizza pizza = _pizzaRepository.GetById(id);
+
+
+            if (pizza == null)
+            {
+                return NotFound("l'elemento non è stato trovato");
+            }
+
+            return Ok(pizza);
+
+        }
+
 
 
     }

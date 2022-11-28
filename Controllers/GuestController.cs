@@ -23,6 +23,11 @@ namespace la_mia_pizzeria_razor_layout.Controllers
             return View();
         }
 
-   
+        public IActionResult Detail()
+        {
+            return View();
+        }
+
+
     }
 }
