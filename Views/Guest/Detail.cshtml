@@ -10,6 +10,12 @@
                 <!-- fine zona card -->
             </div>
         </div>
+        <div class="row container d-flex justify-content-center js_tags_table">
+            <div class="col-sm-12">
+                <!-- zona card -->
+                <!-- fine zona card -->
+            </div>
+        </div>
     </div>
 </div>
 
@@ -27,8 +33,16 @@
                                                           <h4 class="card-title">${res.data.name}</h4>
                                                            <p class="card-text">${res.data.description}</p>
                                                            <p class="card-text">${res.data.category.title}</p>
+                                                                <p class="card-text">${res.data.price}</p>` 
+                                                                for (tags in res.data.tags) {
+                                                                `<ul>
 
-                                            </div>
+                                                                 <li>${tags.title}</li>
+        
+                                                                </ul>`;
+                                                                } `
+
+                                              </div>
                                         </div>
                                     </div>
                                         `;
@@ -38,5 +52,6 @@
         debugger;
         console.log(error);
     })
+
 
 </script>
