@@ -148,11 +148,19 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
 
         }
 
-       
-        
+        public List<Pizza> SearchByTitle(string? Name)
+        {
+            if (Name == null)
+                return Pizzas.ToList();
 
-           
-        
+            return Pizzas.Where(pizza => pizza.Name.ToLower().Contains(Name.ToLower())).ToList();
+        }
+
+
+
+
+
+
     }
 
 

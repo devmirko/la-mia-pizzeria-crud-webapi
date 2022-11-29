@@ -39,6 +39,15 @@ namespace la_mia_pizzeria_razor_layout.Controllers.Api
 
         }
 
+        public IActionResult Search(string? Name)
+        {
+
+            List<Pizza> pizza = _pizzaRepository.SearchByTitle(Name);
+
+            return Ok(pizza);
+
+        }
+
 
 
     }

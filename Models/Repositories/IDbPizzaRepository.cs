@@ -30,6 +30,8 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
 
         void DeleteTag(Tag tag);
 
+        List<Pizza> SearchByTitle(string? Name);
+
 
 
     }
