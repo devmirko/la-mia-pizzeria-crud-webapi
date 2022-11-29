@@ -33,21 +33,19 @@
                                                           <h4 class="card-title">${res.data.name}</h4>
                                                            <p class="card-text">${res.data.description}</p>
                                                            <p class="card-text">${res.data.category.title}</p>
-                                                                <p class="card-text">${res.data.price}</p>` 
-                                                                for (tags in res.data.tags) {
-                                                                `<ul>
-
-                                                                 <li>${tags.title}</li>
-        
-                                                                </ul>`;
-                                                                } `
-
+                                                           <p class="card-text">${res.data.price}</p>
                                               </div>
                                         </div>
                                     </div>
-                                        `;
-            
+    `
+            res.data.tags.forEach(tags => {
+                document.querySelector('.js_post_table').innerHTML += `    <ul>
+
+                                                                              <li>${tags.title}</li>
         
+                                                                          </ul>  `
+            
+            });  
     }).catch(error => {
         debugger;
         console.log(error);
