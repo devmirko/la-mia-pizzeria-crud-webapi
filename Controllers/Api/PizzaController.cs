@@ -39,12 +39,25 @@ namespace la_mia_pizzeria_razor_layout.Controllers.Api
 
         }
 
-        public IActionResult Search(string? Name)
-        {
-
+        public IActionResult Search(string? Name, string? price)
+       {
+            double NewPrice = Convert.ToDouble(price);
             List<Pizza> pizza = _pizzaRepository.SearchByTitle(Name);
+            List<Pizza> ReturnPizza = new List<Pizza>();
 
-            return Ok(pizza);
+            foreach (Pizza pizzaItem in pizza)
+            {
+                if (pizzaItem.Price <= NewPrice)
+                {
+                    ReturnPizza.Add(pizzaItem);
+
+                }
+
+            }
+
+
+
+            return Ok(ReturnPizza);
 
         }
 
