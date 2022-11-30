@@ -11,6 +11,8 @@ namespace la_mia_pizzeria_razor_layout.Data
 
         public DbSet<Tag> Tags { get; set; }
 
+        public DbSet<Message> Messages { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
 

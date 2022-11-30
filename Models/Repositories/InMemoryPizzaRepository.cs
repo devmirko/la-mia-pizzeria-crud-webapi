@@ -11,6 +11,8 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
 
         public static List<Category> Categories = new List<Category>();
 
+        public static List<Message> Messages = new List<Message>();
+
         public static List<Tag> Tags = new List<Tag>();
         private static int counter = 1;
 
@@ -146,6 +148,17 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
             tag.Pizzas = new List<Pizza>();
 
             Tags.Add(tag);
+
+        }
+
+        public void AddMessage(Message message)
+        {
+            message.Id = counter;
+            counter++;
+
+
+
+            Messages.Add(message);
 
         }
 

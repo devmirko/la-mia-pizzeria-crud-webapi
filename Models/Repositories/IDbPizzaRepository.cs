@@ -26,6 +26,8 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
 
         void AddTag(Tag tag);
 
+        void AddMessage(Message message);
+
         void DeleteCategory(Category category);
 
         void DeleteTag(Tag tag);

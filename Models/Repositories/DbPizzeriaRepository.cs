@@ -130,6 +130,15 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
         }
 
 
+        public void AddMessage(Message message)
+        {
+            db.Messages.Add(message);
+            db.SaveChanges();
+
+
+        }
+
+
         public List<Pizza> SearchByTitle(string? Name, double Price)
         {
            
