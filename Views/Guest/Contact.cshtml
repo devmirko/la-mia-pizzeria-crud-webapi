@@ -8,18 +8,22 @@
             <div class="mb-3">
                 <label for="contact-email" class="form-label">Email</label>
                 <input type="email" class="form-control" id="contact-email">
+                <div class="error"></div>
             </div>
             <div class="mb-3">
                 <label for="contact-name" class="form-label">Nome</label>
                 <input type="text" class="form-control" id="contact-name">
+                <div class="error"></div>
             </div>
             <div class="mb-3">
                 <label for="contact-title" class="form-label">Titolo</label>
                 <input type="text" class="form-control" id="contact-title">
+                <div class="error"></div>
             </div>
             <div class="mb-3">
                 <label for="contact-text" class="form-label">Testo</label>
                 <textarea class="form-control" id="contact-text" rows="10"></textarea>
+                <div class="error"></div>
             </div>
             <input type="submit" class="btn btn-primary" value="Invia" />
         </form>
@@ -28,9 +32,11 @@
 
 @section Scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.20.0/axios.min.js"></script>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js" integrity="sha512-AA1Bzp5Q0K1KanKKmvN/4d3IRKVlv9PYgwFPvm32nPO6QS8yH1HO7LbgB1pgiOxPtfeg5zEn2ba64MUcqJx6CA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script type="text/javascript">
         function inviaMessaggio(e) {
+           
+
 
             e.preventDefault();
             axios.post('/api/message', {
@@ -39,14 +45,14 @@
                 title: document.querySelector('#contact-title').value,
                 text: document.querySelector('#contact-text').value,
             }).then(res => {
-                swal("Messaggio inserito correttamente!", "success");
-                //document.querySelector('#contact-email').value = '';
-                //document.querySelector('#contact-name').value = '';
+                document.querySelector('#contact-email').value = '';
                 document.querySelector('#contact-title').value = '';
                 document.querySelector('#contact-text').value = '';
+                document.querySelector('#contact-name').value = '';
             }).catch(error => {
-
-                console.log(error.response.data.errors);
+                let error_message = "inserisci i campi corretti";
+                swal("Errore", error_message, "error");
+                
             })
         }
     </script>
