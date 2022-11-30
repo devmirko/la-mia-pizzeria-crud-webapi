@@ -34,12 +34,13 @@
 <script type="text/javascript">
     //query for input
         document.querySelector(".js_search").addEventListener('keyup', OnUserInputEvent);
-        let priceSelect = document.getElementById("price").value;
+        
+        
 
         var timeoutId = null;
 
         function OnUserInputEvent(e) {
-
+            let priceSelect = document.getElementById("price").value;
             let query = e.target.value;
 
             if (timeoutId != null)
