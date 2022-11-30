@@ -130,15 +130,16 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
         }
 
 
-        public List<Pizza> SearchByTitle(string? Name)
+        public List<Pizza> SearchByTitle(string? Name, double Price)
         {
+           
 
             IQueryable<Pizza> query = db.Pizza.Include("Category").Include("Tags");
 
             if (Name == null)
                 return query.ToList();
 
-            return query.Where(pizza => pizza.Name.ToLower().Contains(Name.ToLower())).ToList();
+            return query.Where(pizza => pizza.Name.ToLower().Contains(Name.ToLower())).Where(p => p.Price == Price).ToList();
         }
 
 

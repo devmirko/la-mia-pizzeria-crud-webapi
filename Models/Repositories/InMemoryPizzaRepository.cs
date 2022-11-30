@@ -1,6 +1,7 @@
 ﻿using la_mia_pizzeria_razor_layout.Models.Form;
 using Microsoft.Extensions.Hosting;
 using System.Diagnostics.Metrics;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace la_mia_pizzeria_razor_layout.Models.Repositories
 {
@@ -148,12 +149,13 @@ namespace la_mia_pizzeria_razor_layout.Models.Repositories
 
         }
 
-        public List<Pizza> SearchByTitle(string? Name)
+        public List<Pizza> SearchByTitle(string? Name, double Price)
         {
+            
             if (Name == null)
                 return Pizzas.ToList();
 
-            return Pizzas.Where(pizza => pizza.Name.ToLower().Contains(Name.ToLower())).ToList();
+            return Pizzas.Where(pizza => pizza.Name.ToLower().Contains(Name.ToLower())).Where(p => p.Price <= Price).ToList();
         }
 
 
