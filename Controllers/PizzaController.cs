@@ -9,9 +9,11 @@ using Microsoft.SqlServer.Server;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authorization;
 
 namespace la_mia_pizzeria_razor_layout.Controllers
 {
+    [Authorize]
     public class PizzaController : Controller
     {
         
